@@ -81,7 +81,7 @@ transfer_option:
       id: 2049
       name: bayu-google-sheets-connection
     spreadsheets_id: 12Oe8pYrUid7NztdZ_MoKwrnMzkQlByszcZZ9OVZqTLU
-    worksheet_title: Sheet1
+    worksheet_title: Sheet2
     timezone: Asia/Tokyo
     value_input_option: USER_ENTERED
     mode: truncate_insert
