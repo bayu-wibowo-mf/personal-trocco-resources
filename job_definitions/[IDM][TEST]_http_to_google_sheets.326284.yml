@@ -1,0 +1,181 @@
+---
+id: 326284
+name: "[IDM][TEST] http to google sheets"
+description: ''
+user:
+  id: 10160
+  email: wibowo.bayu.adi@moneyforward.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: http
+    url: https://disease.sh/v3/covid-19/all
+    method: GET
+    user_agent: ''
+    charset: UTF-8
+    open_timeout: 2000
+    read_timeout: 10000
+    max_retries: 5
+    retry_interval: 10000
+    request_interval: 0
+    input_direct: true
+    success_codes:
+    - '200'
+    params: []
+    custom_variables: []
+    parser:
+      type: jsonl
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      newline: LF
+      charset: UTF-8
+      min_rows_for_guess: 1
+      columns:
+      - name: updated
+        type: long
+      - name: cases
+        type: long
+      - name: todayCases
+        type: long
+      - name: deaths
+        type: long
+      - name: todayDeaths
+        type: long
+      - name: recovered
+        type: long
+      - name: todayRecovered
+        type: long
+      - name: active
+        type: timestamp
+        format: "%d%m%Y"
+      - name: critical
+        type: long
+      - name: casesPerOneMillion
+        type: long
+      - name: deathsPerOneMillion
+        type: double
+      - name: tests
+        type: long
+      - name: testsPerOneMillion
+        type: double
+      - name: population
+        type: long
+      - name: oneCasePerPeople
+        type: long
+      - name: oneDeathPerPeople
+        type: long
+      - name: oneTestPerPeople
+        type: long
+      - name: activePerOneMillion
+        type: double
+      - name: recoveredPerOneMillion
+        type: double
+      - name: criticalPerOneMillion
+        type: double
+      - name: affectedCountries
+        type: long
+    decoders: []
+  out:
+    type: google_spreadsheets_v4
+    google_spreadsheets_connection:
+      id: 2049
+      name: bayu-google-sheets-connection
+    spreadsheets_id: 12Oe8pYrUid7NztdZ_MoKwrnMzkQlByszcZZ9OVZqTLU
+    worksheet_title: Sheet1
+    timezone: Asia/Tokyo
+    value_input_option: USER_ENTERED
+    mode: truncate_insert
+    sorts: []
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: updated
+      src: updated
+      default: ''
+      type: long
+    - name: cases
+      src: cases
+      default: ''
+      type: long
+    - name: todayCases
+      src: todayCases
+      default: ''
+      type: long
+    - name: deaths
+      src: deaths
+      default: ''
+      type: long
+    - name: todayDeaths
+      src: todayDeaths
+      default: ''
+      type: long
+    - name: recovered
+      src: recovered
+      default: ''
+      type: long
+    - name: todayRecovered
+      src: todayRecovered
+      default: ''
+      type: long
+    - name: active
+      src: active
+      default: ''
+      type: timestamp
+      format: "%d%m%Y"
+    - name: critical
+      src: critical
+      default: ''
+      type: long
+    - name: casesPerOneMillion
+      src: casesPerOneMillion
+      default: ''
+      type: long
+    - name: deathsPerOneMillion
+      src: deathsPerOneMillion
+      default: ''
+      type: double
+    - name: tests
+      src: tests
+      default: ''
+      type: long
+    - name: testsPerOneMillion
+      src: testsPerOneMillion
+      default: ''
+      type: double
+    - name: population
+      src: population
+      default: ''
+      type: long
+    - name: oneCasePerPeople
+      src: oneCasePerPeople
+      default: ''
+      type: long
+    - name: oneDeathPerPeople
+      src: oneDeathPerPeople
+      default: ''
+      type: long
+    - name: oneTestPerPeople
+      src: oneTestPerPeople
+      default: ''
+      type: long
+    - name: activePerOneMillion
+      src: activePerOneMillion
+      default: ''
+      type: double
+    - name: recoveredPerOneMillion
+      src: recoveredPerOneMillion
+      default: ''
+      type: double
+    - name: criticalPerOneMillion
+      src: criticalPerOneMillion
+      default: ''
+      type: double
+    - name: affectedCountries
+      src: affectedCountries
+      default: ''
+      type: long
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []
